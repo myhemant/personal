@@ -21,7 +21,7 @@
 	<?php 
 	/* End of condition of removing blue background from page, when printing the content of page. */
 	} else {
-		echo '<div class="content-without-bg">';
+		echo '<div class="content-without-bg">';as as dasd asdsa 
 	}
 	?>
 		 <?php 
