@@ -14,7 +14,8 @@
 	/* If the Page URL coming for print (need to print the content) then remove the blue background from this content, bcoz no need to print this blue background of page. Use another div that contains class content-without-bg.*/
 	$url_arr = explode("/",$_SERVER["REQUEST_URI"]); 
 	if(end($url_arr) != 'print') { 
-	?>
+	?>as da da
+	as das da
     <div class="contentbg">
 	
 	<?php 
@@ -30,7 +31,7 @@
 		<!--Breadcrum Starts here-->
 		 	<div class="pageheading <?php print $breadcrumbclass;?>">
 				<?php print $breadcrumb; ?>
-			</div>
+			</div>a sda
 	  <!--Breadcrum Ends here-->
 	 <?php 
 	/* End of condition of removing breadcrumb from page, when printing the content of page. */
