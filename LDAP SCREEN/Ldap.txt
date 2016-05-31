@@ -1,0 +1,25 @@
+Host:- sdgnoidc05.sdgc.com  FOR GE
+Post;- 389
+Default Ldap
+
+Binding;- User;- Truopsegov
+	  Pass:- Password123
+
+LDAP USER TO DRUPAL USER RELATIONSHIP  = > dc=sdgc,d=com
+samaccountname
+
+Authorisation
+CN=Enterprise_Practice,OU=SDG Domain Distribution Groups,DC=sdgc,DC=com|administrator
+CN=@SDG - Employees Noida,OU=SDG Domain Distribution Groups,DC=sdgc,DC=com|administrator
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+sdgnoidc05.sdgc.com
+389
+Truopsegov / Password123/
+Server:10.20.10.208
+port:389
+Server: 10.10.10.25
+Port: 3268
+Truopsegov
+password =     Password123
+

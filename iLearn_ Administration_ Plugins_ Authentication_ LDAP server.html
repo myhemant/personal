@@ -1,0 +1,848 @@
+<!DOCTYPE html>
+<html id="yui_3_13_0_2_1405080416468_11" class="yui3-js-enabled js textshadow cssanimations csstransitions" dir="ltr" xml:lang="en" lang="en"><div class="" id="yui3-css-stamp" style="position: absolute !important; visibility: hidden !important"></div><head>
+    <title>iLearn: Administration: Plugins: Authentication: LDAP server</title>
+    
+    <link rel="shortcut icon" href="https://ilearn.sdgc.com/iLearn-oldest/favicon.ico">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="keywords" content="moodle, iLearn: Administration: Plugins: Authentication: LDAP server">
+<script type="text/javascript">
+//<![CDATA[
+var M = {}; M.yui = {};
+M.pageloadstarttime = new Date();
+M.cfg = {"wwwroot":"https:\/\/ilearn.sdgc.com\/iLearn-oldest","sesskey":"KlmrKdaBpH","loadingicon":"https:\/\/ilearn.sdgc.com\/iLearn-oldest\/theme\/image.php\/essential\/core\/1402051561\/i\/loading_small","themerev":"1402051561","slasharguments":1,"theme":"essential","jsrev":"1402051407","svgicons":true,"developerdebug":true};var yui1ConfigFn = function(me) {if(/-skin|reset|fonts|grids|base/.test(me.name)){me.type='css';me.path=me.path.replace(/\.js/,'.css');me.path=me.path.replace(/\/yui2-skin/,'/assets/skins/sam/yui2-skin')}};
+var yui2ConfigFn = function(me) {var parts=me.name.replace(/^moodle-/,'').split('-'),component=parts.shift(),module=parts[0],min='-min';if(/-(skin|core)$/.test(me.name)){parts.pop();me.type='css';min=''};if(module){var filename=parts.join('-');me.path=component+'/'+module+'/'+filename+min+'.'+me.type}else me.path=component+'/'+component+'.'+me.type};
+YUI_config = {"debug":true,"base":"https:\/\/ilearn.sdgc.com\/iLearn-oldest\/lib\/yuilib\/3.13.0\/","comboBase":"https:\/\/ilearn.sdgc.com\/iLearn-oldest\/theme\/yui_combo.php?","combine":true,"filter":"RAW","insertBefore":"firstthemesheet","groups":{"yui2":{"base":"https:\/\/ilearn.sdgc.com\/iLearn-oldest\/lib\/yuilib\/2in3\/2.9.0\/build\/","comboBase":"https:\/\/ilearn.sdgc.com\/iLearn-oldest\/theme\/yui_combo.php?","combine":true,"ext":false,"root":"2in3\/2.9.0\/build\/","patterns":{"yui2-":{"group":"yui2","configFn":yui1ConfigFn}}},"moodle":{"name":"moodle","base":"https:\/\/ilearn.sdgc.com\/iLearn-oldest\/theme\/yui_combo.php?m\/1402051407\/","combine":true,"comboBase":"https:\/\/ilearn.sdgc.com\/iLearn-oldest\/theme\/yui_combo.php?","ext":false,"root":"m\/1402051407\/","patterns":{"moodle-":{"group":"moodle","configFn":yui2ConfigFn}},"filter":"DEBUG","modules":{"moodle-core-formautosubmit":{"requires":["base","event-key"]},"moodle-core-formchangechecker":{"requires":["base","event-focus"]},"moodle-core-tooltip":{"requires":["base","node","io-base","moodle-core-notification","json-parse","widget-position","widget-position-align","event-outside","cache-base"]},"moodle-core-dock":{"requires":["base","node","event-custom","event-mouseenter","event-resize","escape","moodle-core-dock-loader"]},"moodle-core-dock-loader":{"requires":["escape"]},"moodle-core-actionmenu":{"requires":["base","event","node-event-simulate"]},"moodle-core-popuphelp":{"requires":["moodle-core-tooltip"]},"moodle-core-chooserdialogue":{"requires":["base","panel","moodle-core-notification"]},"moodle-core-blocks":{"requires":["base","node","io","dom","dd","dd-scroll","moodle-core-dragdrop","moodle-core-notification"]},"moodle-core-notification":{"requires":["moodle-core-notification-dialogue","moodle-core-notification-alert","moodle-core-notification-confirm","moodle-core-notification-exception","moodle-core-notification-ajaxexception"]},"moodle-core-notification-dialogue":{"requires":["base","node","panel","event-key","dd-plugin"]},"moodle-core-notification-alert":{"requires":["moodle-core-notification-dialogue"]},"moodle-core-notification-confirm":{"requires":["moodle-core-notification-dialogue"]},"moodle-core-notification-exception":{"requires":["moodle-core-notification-dialogue"]},"moodle-core-notification-ajaxexception":{"requires":["moodle-core-notification-dialogue"]},"moodle-calendar-eventmanager":{"requires":["base","node","event-mouseenter","overlay","moodle-calendar-eventmanager-skin"]},"moodle-course-management":{"requires":["base","node","io-base","moodle-core-notification-exception","json-parse","dd-constrain","dd-proxy","dd-drop","dd-delegate","node-event-delegate"]},"moodle-course-util":{"requires":["node"],"use":["moodle-course-util-base"],"submodules":{"moodle-course-util-base":{},"moodle-course-util-section":{"requires":["node","moodle-course-util-base"]},"moodle-course-util-cm":{"requires":["node","moodle-course-util-base"]}}},"moodle-course-categoryexpander":{"requires":["node","event-key"]},"moodle-mod_quiz-autosave":{"requires":["base","node","event","event-valuechange","node-event-delegate","io-form"]},"moodle-block_navigation-navigation":{"requires":["base","io-base","node","event-synthetic","event-delegate","json-parse"]},"moodle-filter_glossary-autolinker":{"requires":["base","node","io-base","json-parse","event-delegate","overlay","moodle-core-notification-alert"]},"moodle-tool_capability-search":{"requires":["base","node"]},"moodle-theme_bootstrapbase-bootstrap":{"requires":["node","selector-css3"]},"moodle-assignfeedback_editpdf-editor":{"requires":["base","event","node","io","graphics","json","event-move","querystring-stringify-simple","moodle-core-notification-dialog","moodle-core-notification-exception","moodle-core-notification-ajaxexception"]}}}},"modules":{"core_filepicker":{"name":"core_filepicker","fullpath":"https:\/\/ilearn.sdgc.com\/iLearn-oldest\/lib\/javascript.php\/1402051407\/repository\/filepicker.js","requires":["base","node","node-event-simulate","json","async-queue","io-base","io-upload-iframe","io-form","yui2-treeview","panel","cookie","datatable","datatable-sort","resize-plugin","dd-plugin","escape","moodle-core_filepicker"]}}};
+M.yui.loader = {modules: {}};
+
+//]]>
+</script>
+<link rel="stylesheet" type="text/css" href="iLearn:%20Administration:%20Plugins:%20Authentication:%20LDAP%20server_files/yui_combo.css"><script type="text/javascript" src="iLearn:%20Administration:%20Plugins:%20Authentication:%20LDAP%20server_files/yui_combo_007.js"></script><script type="text/javascript" src="iLearn:%20Administration:%20Plugins:%20Authentication:%20LDAP%20server_files/yui_combo_006.js"></script><script type="text/javascript" src="iLearn:%20Administration:%20Plugins:%20Authentication:%20LDAP%20server_files/jquery-1.js"></script>
+<script type="text/javascript" src="iLearn:%20Administration:%20Plugins:%20Authentication:%20LDAP%20server_files/cslider_1.js"></script>
+<script type="text/javascript" src="iLearn:%20Administration:%20Plugins:%20Authentication:%20LDAP%20server_files/custom_1.js"></script>
+<script type="text/javascript" src="iLearn:%20Administration:%20Plugins:%20Authentication:%20LDAP%20server_files/alert_2.js"></script>
+<script type="text/javascript" src="iLearn:%20Administration:%20Plugins:%20Authentication:%20LDAP%20server_files/carousel_2.js"></script>
+<script type="text/javascript" src="iLearn:%20Administration:%20Plugins:%20Authentication:%20LDAP%20server_files/collapse_2.js"></script>
+<script type="text/javascript" src="iLearn:%20Administration:%20Plugins:%20Authentication:%20LDAP%20server_files/modal_2.js"></script>
+<script type="text/javascript" src="iLearn:%20Administration:%20Plugins:%20Authentication:%20LDAP%20server_files/scrollspy_2.js"></script>
+<script type="text/javascript" src="iLearn:%20Administration:%20Plugins:%20Authentication:%20LDAP%20server_files/tab_2.js"></script>
+<script type="text/javascript" src="iLearn:%20Administration:%20Plugins:%20Authentication:%20LDAP%20server_files/tooltip_2.js"></script>
+<script type="text/javascript" src="iLearn:%20Administration:%20Plugins:%20Authentication:%20LDAP%20server_files/transition_2.js"></script>
+<script type="text/javascript" src="iLearn:%20Administration:%20Plugins:%20Authentication:%20LDAP%20server_files/modernizr_2.js"></script>
+<script async="" src="iLearn:%20Administration:%20Plugins:%20Authentication:%20LDAP%20server_files/yui_combo_004.js" id="yui_3_13_0_2_1405080416468_2" charset="utf-8"></script><script async="" src="iLearn:%20Administration:%20Plugins:%20Authentication:%20LDAP%20server_files/yui_combo.js" id="yui_3_13_0_3_1405080416468_12" charset="utf-8"></script><script async="" src="iLearn:%20Administration:%20Plugins:%20Authentication:%20LDAP%20server_files/yui_combo_002.js" id="yui_3_13_0_2_1405080416468_4" charset="utf-8"></script><link href="iLearn:%20Administration:%20Plugins:%20Authentication:%20LDAP%20server_files/yui_combo_002.css" id="yui_3_13_0_3_1405080416468_58" rel="stylesheet" charset="utf-8"><script async="" src="iLearn:%20Administration:%20Plugins:%20Authentication:%20LDAP%20server_files/yui_combo_005.js" id="yui_3_13_0_3_1405080416468_59" charset="utf-8"></script><script async="" src="iLearn:%20Administration:%20Plugins:%20Authentication:%20LDAP%20server_files/yui_combo_003.js" id="yui_3_13_0_3_1405080416468_119" charset="utf-8"></script><script id="firstthemesheet" type="text/css">/** Required in order to fix style inclusion problems in IE with YUI **/</script><link rel="stylesheet" type="text/css" href="iLearn:%20Administration:%20Plugins:%20Authentication:%20LDAP%20server_files/all.css">
+<script type="text/javascript" src="iLearn:%20Administration:%20Plugins:%20Authentication:%20LDAP%20server_files/javascript-static.js"></script>
+<script type="text/javascript" src="iLearn:%20Administration:%20Plugins:%20Authentication:%20LDAP%20server_files/head.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Google web fonts -->
+    	<link href="iLearn:%20Administration:%20Plugins:%20Authentication:%20LDAP%20server_files/css_002.css" rel="stylesheet" type="text/css">
+	<link href="iLearn:%20Administration:%20Plugins:%20Authentication:%20LDAP%20server_files/css.css" rel="stylesheet" type="text/css">
+    <!-- iOS Homescreen Icons -->
+    
+<link rel="apple-touch-icon-precomposed" sizes="57x57" href="https://ilearn.sdgc.com/iLearn-oldest/theme/image.php/essential/theme/1402051561/homeicon/iphone">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="https://ilearn.sdgc.com/iLearn-oldest/theme/image.php/essential/theme/1402051561/homeicon/ipad">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="https://ilearn.sdgc.com/iLearn-oldest/theme/image.php/essential/theme/1402051561/homeicon/iphone_retina">
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://ilearn.sdgc.com/iLearn-oldest/theme/image.php/essential/theme/1402051561/homeicon/ipad_retina"></head>
+
+<body id="page-admin-auth-ldap" class="format-site admin path-admin path-admin-auth gecko dir-ltr lang-en yui-skin-sam yui3-skin-sam ilearn-sdgc-com--iLearn-oldest pagelayout-admin course-1 context-1 two-column essential-colours-default has-region-side-pre used-region-side-pre has-region-footer-left empty-region-footer-left has-region-footer-middle empty-region-footer-middle has-region-footer-right empty-region-footer-right jsenabled" oncontextmenu="return false;">
+
+<div class="skiplinks"><a class="skip" href="#maincontent">Skip to main content</a></div>
+<script type="text/javascript">
+//<![CDATA[
+document.body.className += ' jsenabled';
+//]]>
+</script>
+
+
+
+
+    <header id="page-header" class="clearfix">
+
+    <div class="container-fluid">
+    <div class="row-fluid">
+    <!-- HEADER: LOGO AREA -->
+                	<div class="span11">
+                                    <i id="headerlogo" class="fa fa-laptop"></i>
+                                	<h1 id="title">iLearn</h1>
+                	<h2 id="subtitle">SDG - Learning &amp;amp; Development
+</h2>
+                                
+                    </div>
+                <div class="span1 pull-right" id="profilepic">
+            <p id="socialheading">Rohit</p>
+            <ul class="socials unstyled">
+                <li>
+                    <a href="https://ilearn.sdgc.com/iLearn-oldest/user/profile.php?id=4671">
+                        </a><a href="https://ilearn.sdgc.com/iLearn-oldest/user/profile.php?id=4671"><img src="iLearn:%20Administration:%20Plugins:%20Authentication:%20LDAP%20server_files/f2.png" alt="Picture of Rohit Joshi" title="Picture of Rohit Joshi" class="userpicture defaultuserpic" height="35" width="35"></a>                    
+                </li>
+            </ul>            
+
+        </div>
+            </div>
+</div></header>
+
+<header role="banner" class="navbar">
+    <nav role="navigation" class="navbar-inner">
+        <div class="container-fluid">
+            <a class="brand" href="https://ilearn.sdgc.com/iLearn-oldest">iLearn</a>
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </a>
+            <div class="nav-collapse collapse">
+                <ul class="nav"><li class="dropdown"><a href="https://ilearn.sdgc.com/iLearn-oldest/my/index.php" class="dropdown-toggle" data-toggle="dropdown" title="My Dashboard"><i class="fa fa-dashboard"></i>My Dashboard<b class="caret"></b></a><ul class="dropdown-menu"><li><a title="Profile" href="https://ilearn.sdgc.com/iLearn-oldest/user/profile.php"><em><i class="fa fa-user"></i>Profile</em></a></li><li><a title="Calendar" href="https://ilearn.sdgc.com/iLearn-oldest/calendar/view.php"><em><i class="fa fa-calendar"></i>Calendar</em></a></li><li><a title="Badges" href="https://ilearn.sdgc.com/iLearn-oldest/badges/mybadges.php"><em><i class="fa fa-certificate"></i>Badges</em></a></li><li><a title="Log out" href="https://ilearn.sdgc.com/iLearn-oldest/login/logout.php"><em><i class="fa fa-sign-out"></i>Log out</em></a></li></ul></li><li class="dropdown"><a href="https://ilearn.sdgc.com/iLearn-oldest/my/index.php" class="dropdown-toggle" data-toggle="dropdown" title="My Courses"><i class="fa fa-briefcase"></i>My Courses<b class="caret"></b></a><ul class="dropdown-menu"><li><a title="You have no current enrolments" href="https://ilearn.sdgc.com/iLearn-oldest/"><em>You have no current enrolments</em></a></li></ul></li></ul>                <ul class="nav pull-right">
+                    <li></li>
+                    <li class="navbar-text"><div class="logininfo">You are logged in as <a href="https://ilearn.sdgc.com/iLearn-oldest/user/profile.php?id=4671" title="View profile">Rohit Joshi</a> (<a href="https://ilearn.sdgc.com/iLearn-oldest/login/logout.php?sesskey=KlmrKdaBpH">Log out</a>)</div></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<!-- Start Main Regions -->
+<div id="page" class="container-fluid">
+
+    <div id="page-content" class="row-fluid">
+        <section id="region-main" class="span9 pull-right">
+        	<div id="page-navbar" class="clearfix">
+            	<div class="breadcrumb-nav"><span class="accesshide">Page path</span><ul class="breadcrumb"><li><a href="https://ilearn.sdgc.com/iLearn-oldest/">Home</a> <span class="divider">/</span></li><li><span tabindex="0">Site administration</span> <span class="divider">/</span></li><li><span tabindex="0">Plugins</span> <span class="divider">/</span></li><li><span tabindex="0">Authentication</span> <span class="divider">/</span></li><li><a href="https://ilearn.sdgc.com/iLearn-oldest/admin/auth_config.php?auth=ldap">LDAP server</a></li></ul></div>
+            	<nav class="breadcrumb-button"><div class="singlebutton"><form method="get" action="https://ilearn.sdgc.com/iLearn-oldest/admin/auth_config.php"><div><input value="Blocks editing on" type="submit"><input name="auth" value="ldap" type="hidden"><input name="adminedit" value="1" type="hidden"><input name="sesskey" value="KlmrKdaBpH" type="hidden"></div></form></div></nav>
+        	</div>
+            <div id="yui_3_13_0_3_1405080416468_136" role="main"><span id="maincontent"></span><form id="authmenu" method="post" action="auth_config.php">
+<div id="yui_3_13_0_3_1405080416468_135">
+<input name="sesskey" value="KlmrKdaBpH" type="hidden">
+<input name="auth" value="ldap" type="hidden">
+<div id="yui_3_13_0_3_1405080416468_134" class="box generalbox"><h2>LDAP server</h2><div class="box informationbox">This method provides authentication against an external LDAP server.
+                                  If the given username and password are valid, Moodle creates a new user
+                                  entry in its database. This module can read user attributes from LDAP and prefill
+                                  wanted fields in Moodle.  For following logins only the username and
+                                  password are checked.</div><hr>
+<table id="yui_3_13_0_3_1405080416468_133" border="0" cellpadding="5" cellspacing="0">
+<tbody id="yui_3_13_0_3_1405080416468_132"><tr>
+   <td colspan="2">
+       <h4>LDAP server settings</h4>
+   </td>
+</tr>
+<tr id="yui_3_13_0_3_1405080416468_131" class="required" valign="top">
+    <td align="right">
+        <label for="host_url">Host URL</label>
+    </td>
+    <td id="yui_3_13_0_3_1405080416468_130">
+        <input name="host_url" id="host_url" size="30" value="10.10.10.25:3268;10.20.10.201:389" type="text">
+            </td>
+    <td>
+        Specify LDAP host in URL-form like 'ldap://ldap.myorg.com/' or 
+'ldaps://ldap.myorg.com/' Separate multipleservers with ';' to get 
+failover support.    </td>
+</tr>
+<tr class="required" valign="top">
+    <td align="right">
+        <label for="ldap_version">Version</label>
+    </td>
+    <td>
+        <select id="menuldap_version" class="select menuldap_version" name="ldap_version"><option value="2">2</option><option selected="selected" value="3">3</option></select>    </td>
+    <td>
+        The version of the LDAP protocol your server is using.    </td>
+</tr>
+<tr valign="top">
+    <td align="right">
+        <label for="start_tls">Use TLS</label>
+    </td>
+    <td>
+        <select id="menustart_tls" class="select menustart_tls" name="start_tls"><option selected="selected" value="0">No</option><option value="1">Yes</option></select>    </td>
+    <td>
+        Use regular LDAP service (port 389) with TLS encryption    </td>
+</tr>
+<tr class="required" valign="top">
+    <td align="right">
+        <label for="ldapencoding">LDAP encoding</label>
+    </td>
+    <td>
+        <input id="ldapencoding" name="ldapencoding" value="cp1250" type="text">
+            </td>
+    <td>
+        Specify encoding used by LDAP server. Most probably utf-8, MS AD
+ v2 uses default platform encoding such as cp1252, cp1250, etc.    </td>
+</tr>
+<tr valign="top">
+    <td align="right">
+        <label for="pagesize">Page Size</label>
+    </td>
+    <td>
+        <input id="pagesize" name="pagesize" value="250" type="text">
+        
+    </td>
+    <td>
+        Make sure this value is smaller than your LDAP server result set
+ size limit (the maximum number of entries that can be returned in a 
+single query)    </td>
+</tr>
+<tr>
+    <td colspan="2">
+        <h4>Bind settings</h4>
+    </td>
+</tr>
+<tr class="required" valign="top">
+    <td align="right">
+        <label for="menupreventpassindb">Hide passwords</label>
+    </td>
+    <td>
+        <select id="menupreventpassindb" class="select menupreventpassindb" name="preventpassindb"><option value="0">No</option><option selected="selected" value="1">Yes</option></select>    </td>
+    <td>
+        Select yes to prevent passwords from being stored in Moodle's DB.    </td>
+</tr>
+<tr class="required" valign="top">
+    <td align="right">
+        <label for="bind_dn">Distinguished name</label>
+    </td>
+    <td>
+        <input name="bind_dn" id="bind_dn" size="30" value="Truopsegov" type="text">
+            </td>
+    <td>
+        If you want to use bind-user to search users, specify it here. Something like 'cn=ldapuser,ou=public,o=org'    </td>
+</tr>
+<tr class="required" valign="top">
+    <td align="right">
+        <label for="bind_pw">Password</label>
+    </td>
+    <td>
+        <input name="bind_pw" id="bind_pw" size="30" value="Password123" autocomplete="off" type="password">
+            <div id="bind_pwunmaskdiv" class="unmask"><input id="bind_pwunmask" name="bind_pwunmask" type="checkbox"><label for="bind_pwunmask">Unmask</label></div></td>
+    <td>
+        Password for bind-user.    </td>
+</tr>
+<tr>
+    <td colspan="2">
+        <h4>User lookup settings</h4>
+    </td>
+</tr>
+<tr class="required" valign="top">
+    <td align="right">
+        <label for="menuuser_type">User type</label>
+    </td>
+    <td>
+        <select id="menuuser_type" class="select menuuser_type" name="user_type"><option value="edir">Novell Edirectory</option><option value="rfc2307">posixAccount (rfc2307)</option><option value="rfc2307bis">posixAccount (rfc2307bis)</option><option value="samba">sambaSamAccount (v.3.0.7)</option><option selected="selected" value="ad">MS ActiveDirectory</option><option value="default">Default</option></select>    </td>
+    <td>
+        Select how users are stored in LDAP. This setting also specifies
+ how login expiration, grace logins and user creation will work.    </td>
+</tr>
+<tr class="required" valign="top">
+    <td align="right">
+        <label for="contexts">Contexts</label>
+    </td>
+    <td>
+        <input name="contexts" id="contexts" size="30" value="ou=noida users,ou=noida.sdgc users,dc=noida,dc=sdgc,dc=com;ou=hyder users,ou=noida.sdgc users,dc=noida,dc=sdgc,dc=com;ou=hyder users_ge,ou=noida.sdgc users,dc=noida,dc=sdgc,dc=com;ou=activeusers,ou=sdgc users,dc=sdgc,dc=com" type="text">
+            </td>
+    <td>
+        List of contexts where users are located. Separate different 
+contexts with ';'. For example: 'ou=users,o=org; ou=others,o=org'    </td>
+</tr>
+<tr class="required" valign="top">
+    <td align="right">
+        <label for="menusearch_sub">Search subcontexts</label>
+    </td>
+    <td>
+        <select id="menusearch_sub" class="select menusearch_sub" name="search_sub"><option value="0">No</option><option selected="selected" value="1">Yes</option></select>    </td>
+    <td>
+        Search users from subcontexts.    </td>
+</tr>
+<tr class="required" valign="top">
+    <td align="right">
+        <label for="menuopt_deref">Dereference aliases</label>
+    </td>
+    <td>
+        <select id="menuopt_deref" class="select menuopt_deref" name="opt_deref"><option selected="selected" value="0">No</option><option value="3">Yes</option></select>    </td>
+    <td>
+        Determines how aliases are handled during search. Select one of 
+the following values: "No" (LDAP_DEREF_NEVER) or "Yes" 
+(LDAP_DEREF_ALWAYS)    </td>
+</tr>
+<tr class="required" valign="top">
+    <td align="right">
+        <label for="user_attribute">User attribute</label>
+    </td>
+    <td>
+        <input name="user_attribute" id="user_attribute" size="30" value="samaccountname" type="text">
+            </td>
+    <td>
+        Optional: Overrides the attribute used to name/search users. Usually 'cn'.    </td>
+</tr>
+<tr class="required" valign="top">
+    <td align="right">
+        <label for="memberattribute">Member attribute</label>
+    </td>
+    <td>
+        <input name="memberattribute" id="memberattribute" size="30" type="text">
+            </td>
+    <td>
+        Optional: Overrides user member attribute, when users belongs to a group. Usually 'member'    </td>
+</tr>
+<tr class="required" valign="top">
+    <td align="right">
+        <label for="memberattribute_isdn">Member attribute uses dn</label>
+    </td>
+    <td>
+        <input name="memberattribute_isdn" id="memberattribute_isdn" size="30" type="text">
+            </td>
+    <td>
+        Optional: Overrides handling of member attribute values, either 0 or 1    </td>
+</tr>
+<tr class="required" valign="top">
+    <td align="right">
+        <label for="objectclass">Object class</label>
+    </td>
+    <td>
+        <input name="objectclass" id="objectclass" size="30" type="text">
+            </td>
+    <td>
+        Optional: Overrides objectClass used to name/search users on ldap_user_type. Usually you dont need to chage this.    </td>
+</tr>
+<tr>
+    <td colspan="2">
+        <h4>Force change password</h4>
+    </td>
+</tr>
+<tr class="required" valign="top">
+    <td align="right" valign="top">
+        <label for="menuforcechangepassword">Force change password</label>
+    </td>
+    <td>
+        <select id="menuforcechangepassword" class="select menuforcechangepassword" name="forcechangepassword"><option selected="selected" value="0">No</option><option value="1">Yes</option></select>    </td>
+    <td align="left" valign="top">
+        <p>Force users to change password on their first login to Moodle.</p>
+    </td>
+</tr>
+<tr class="required" valign="top">
+    <td align="right" valign="top">
+        <label for="menustdchangepassword">Use standard page for changing password</label>
+    </td>
+    <td>
+        <select id="menustdchangepassword" class="select menustdchangepassword" name="stdchangepassword"><option selected="selected" value="0">No</option><option value="1">Yes</option></select>    </td>
+    <td align="left" valign="top">
+        <p>If the external authentication system allows password changes
+ through Moodle, switch this to Yes. This setting overrides 'Change 
+Password URL'.</p>
+        <p>NOTE: It is recommended that you use LDAP over an SSL encrypted tunnel (ldaps://) if the LDAP server is remote.</p>
+    </td>
+</tr>
+<tr class="required" valign="top">
+    <td align="right">
+        <label for="menupasstype">Password format</label>
+    </td>
+    <td>
+        <select id="menupasstype" class="select menupasstype" name="passtype"><option selected="selected" value="plaintext">Plain text</option><option value="md5">MD5 hash</option><option value="sha1">SHA-1 hash</option></select>    </td>
+    <td>
+        Specify the format of new or changed passwords in LDAP server.    </td>
+</tr>
+<tr valign="top">
+    <td align="right">
+        <label for="changepasswordurl">Password-change URL</label>
+    </td>
+    <td>
+        <input name="changepasswordurl" id="changepasswordurl" type="text">
+            </td>
+    <td>
+        Here you can specify a location at which your users can recover 
+or change their username/password if they've forgotten it. This will be 
+provided to users as a button on the login page and their user page. If 
+you leave this blank the button will not be printed.    </td>
+</tr>
+<tr>
+    <td colspan="2">
+        <h4>LDAP password expiration settings.</h4>
+    </td>
+</tr>
+<tr class="required" valign="top">
+    <td align="right">
+        <label for="menuexpiration">Expiration</label>
+    </td>
+    <td>
+        <select id="menuexpiration" class="select menuexpiration" name="expiration"><option selected="selected" value="0">no</option><option value="1">LDAP</option></select>    </td>
+    <td>
+        Select No to disable expired password checking or LDAP to read passwordexpiration time directly from LDAP    </td>
+</tr>
+<tr class="required" valign="top">
+    <td align="right">
+        <label for="expiration_warning">Expiration warning</label>
+    </td>
+    <td>
+        <input name="expiration_warning" id="expiration_warning" size="2" value="10" type="text">
+            </td>
+    <td>
+        Number of days before password expiration warning is issued.    </td>
+</tr>
+<tr class="required" valign="top">
+    <td align="right">
+        <label for="expireattr">Expiration attribute</label>
+    </td>
+    <td>
+        <input name="expireattr" id="expireattr" size="30" type="text">
+            </td>
+    <td>
+        Optional: overrides ldap-attribute that stores password expiration time    </td>
+</tr>
+<tr class="required" valign="top">
+    <td align="right">
+        <label for="menugracelogins">Grace logins</label>
+    </td>
+    <td>
+        <select id="menugracelogins" class="select menugracelogins" name="gracelogins"><option selected="selected" value="0">No</option><option value="1">Yes</option></select>    </td>
+    <td>
+        Enable LDAP gracelogin support. After password has expired user 
+can login until gracelogin count is 0. Enabling this setting displays 
+grace login message if password is expired.    </td>
+</tr>
+<tr class="required" valign="top">
+    <td align="right">
+        <label for="graceattr">Grace login attribute</label>
+    </td>
+    <td>
+        <input name="graceattr" id="graceattr" size="30" type="text">
+            </td>
+    <td>
+        Optional: Overrides  gracelogin attribute    </td>
+</tr>
+<tr>
+    <td colspan="2">
+        <h4>Enable user creation</h4>
+    </td>
+</tr>
+<tr valign="top">
+    <td align="right">
+        <label for="menuauth_user_create">Create users externally</label>
+    </td>
+    <td>
+        <select id="menuauth_user_create" class="select menuauth_user_create" name="auth_user_create"><option selected="selected" value="0">No</option><option value="1">Yes</option></select>    </td>
+    <td>
+        New (anonymous) users can create user accounts on the external 
+authentication source and confirmed via email. If you enable this , 
+remember to also configure module-specific options for user creation.   
+ </td>
+</tr>
+<tr class="required" valign="top">
+    <td align="right">
+        <label for="create_context">Context for new users</label>
+    </td>
+    <td>
+        <input name="create_context" id="create_context" size="30" type="text">
+            </td>
+    <td>
+        If you enable user creation with email confirmation, specify the
+ context where users are created. This context should be different from 
+other users to prevent security issues. You don't need to add this 
+context to ldap_context-variable, Moodle will search for users from this
+ context automatically.<br><b>Note!</b> You have to modify the method user_create() in file auth/ldap/auth.php to make user creation work    </td>
+</tr>
+<tr>
+    <td colspan="2">
+        <h4>Course creator</h4>
+    </td>
+</tr>
+<tr class="required" valign="top">
+    <td align="right">
+        <label for="creators">Creators</label>
+    </td>
+    <td>
+        <input name="creators" id="creators" size="30" type="text">
+            </td>
+    <td>
+        List of groups or contexts whose members are allowed to create 
+new courses. Separate multiple groups with ';'. Usually something like 
+'cn=teachers,ou=staff,o=myorg'    </td>
+</tr>
+<tr>
+    <td colspan="2">
+        <h4>Cron synchronization script</h4>
+    </td>
+</tr>
+<tr valign="top">
+    <td align="right">
+        <label for="menuremoveuser">Removed ext user</label>
+    </td>
+    <td>
+        <select id="menuremoveuser" class="select menuremoveuser" name="removeuser"><option value="0">Keep internal</option><option selected="selected" value="1">Suspend internal</option><option value="2">Full delete internal</option></select>    </td>
+    <td>
+        Specify what to do with internal user account during mass 
+synchronization when user was removed from external source. Only 
+suspended users are automatically revived if they reappear in ext 
+source.    </td>
+</tr>
+<tr>
+    <td colspan="2">
+        <h4>NTLM SSO</h4>
+    </td>
+</tr>
+<tr valign="top">
+    <td align="right">
+        <label for="menuntlmsso_enabled">Enable</label>
+    </td>
+    <td>
+        <select id="menuntlmsso_enabled" class="select menuntlmsso_enabled" name="ntlmsso_enabled"><option selected="selected" value="0">No</option><option value="1">Yes</option></select>    </td>
+    <td>
+        Set to yes to attempt Single Sign On with the NTLM domain. <strong>Note:</strong> this requires additional setup on the webserver to work, see <a href="http://docs.moodle.org/en/NTLM_authentication">http://docs.moodle.org/en/NTLM_authentication</a>    </td>
+</tr>
+<tr valign="top">
+    <td align="right">
+        <label for="ntlmsso_subnet">Subnet</label>
+    </td>
+    <td>
+        <input name="ntlmsso_subnet" id="ntlmsso_subnet" size="30" type="text">
+    </td>
+    <td>
+        If set, it will only attempt SSO with clients in this subnet. 
+Format: xxx.xxx.xxx.xxx/bitmask. Separate multiple subnets with ',' 
+(comma).    </td>
+</tr>
+<tr valign="top">
+    <td align="right">
+        <label for="menuntlmsso_ie_fastpath">MS IE fast path?</label>
+    </td>
+    <td>
+        <select id="menuntlmsso_ie_fastpath" class="select menuntlmsso_ie_fastpath" name="ntlmsso_ie_fastpath"><option value="1">Yes, all other browsers use standard login form</option><option value="2">Yes, attempt NTLM other browsers</option><option selected="selected" value="0">Attempt NTLM with all browsers</option></select>    </td>
+    <td>
+    Set to enable the NTLM SSO fast path (bypasses certain steps if the client's browser is MS Internet Explorer).    </td>
+</tr>
+<tr valign="top">
+    <td align="right">
+        <label for="menuntlmsso_type">Authentication type</label>
+    </td>
+    <td>
+        <select id="menuntlmsso_type" class="select menuntlmsso_type" name="ntlmsso_type"><option selected="selected" value="ntlm">NTLM</option><option value="kerberos">Kerberos</option></select>    </td>
+    <td>
+        The authentication method configured in the web server to authenticate the users (if in doubt, choose NTLM)    </td>
+</tr>
+<tr valign="top">
+    <td align="right">
+        <label for="ntlmsso_remoteuserformat">Remote username format</label>
+    </td>
+    <td>
+        <input name="ntlmsso_remoteuserformat" id="ntlmsso_remoteuserformat" size="30" type="text">
+            </td>
+    <td>
+        If you have chosen 'NTLM' in 'Authentication type', you can 
+specify the remote username format here. If you leave this empty, the 
+default DOMAIN\username format will be used. You can use the optional <b>%domain%</b> placeholder to specify where the domain name appears, and the mandatory <b>%username%</b> placeholder to specify where the username appears. <br><br>Some widely used formats are <tt>%domain%\%username%</tt> (MS Windows default), <tt>%domain%/%username%</tt>, <tt>%domain%+%username%</tt> and just <tt>%username%</tt> (if there is no domain part).    </td>
+</tr>
+<tr><td colspan="3"><h2>Data mapping</h2></td></tr><tr valign="top"><td align="right"><label for="lockconfig_field_map_firstname">First name</label></td><td><input id="lockconfig_field_map_firstname" name="lockconfig_field_map_firstname" size="30" value="givenname" type="text"><div style="text-align: right"><label for="menulockconfig_field_updatelocal_firstname">Update local</label>&nbsp;<select id="menulockconfig_field_updatelocal_firstname" class="select menulockconfig_field_updatelocal_firstname" name="lockconfig_field_updatelocal_firstname"><option value="oncreate">On creation</option><option selected="selected" value="onlogin">On every login</option></select><br><label for="menulockconfig_field_updateremote_firstname">Update external</label>&nbsp;<select id="menulockconfig_field_updateremote_firstname" class="select menulockconfig_field_updateremote_firstname" name="lockconfig_field_updateremote_firstname"><option selected="selected" value="0">Never</option><option value="1">On update</option></select><br><label for="menulockconfig_field_lock_firstname">Lock value</label>&nbsp;<select id="menulockconfig_field_lock_firstname" class="select menulockconfig_field_lock_firstname" name="lockconfig_field_lock_firstname"><option value="unlocked">Unlocked</option><option value="unlockedifempty">Unlocked if empty</option><option selected="selected" value="locked">Locked</option></select></div></td><td rowspan="14">These fields are optional.  You can choose to pre-fill some Moodle user fields with information from the <b>LDAP fields</b> that you specify here. <p>If you leave these fields blank, then nothing will be transferred from LDAP and Moodle defaults will be used instead.</p><p>In either case, the user will be able to edit all of these fields after they log in.</p><p><b>Update local:</b>
+ If enabled, the field will be updated (from external auth) every time 
+the user logs in or there is a user synchronization. Fields set to 
+update locally should be locked.</p><p><b>Lock value:</b> If enabled, 
+will prevent Moodle users and admins from editing the field directly. 
+Use this option if you are maintaining this data in the external auth 
+system. </p><p><b>Update external:</b> If enabled, the external auth will be updated when the user record is updated. Fields should be unlocked to allow edits.</p><hr><p><b>Note:</b>
+ Updating external LDAP data requires that you set binddn and bindpw to a
+ bind-user with editing privileges to all the user records. It currently
+ does not preserve multi-valued attributes, and will remove extra values
+ on update. </p></td></tr><tr valign="top"><td align="right"><label for="lockconfig_field_map_lastname">Surname</label></td><td><input id="lockconfig_field_map_lastname" name="lockconfig_field_map_lastname" size="30" value="sn" type="text"><div style="text-align: right"><label for="menulockconfig_field_updatelocal_lastname">Update local</label>&nbsp;<select id="menulockconfig_field_updatelocal_lastname" class="select menulockconfig_field_updatelocal_lastname" name="lockconfig_field_updatelocal_lastname"><option value="oncreate">On creation</option><option selected="selected" value="onlogin">On every login</option></select><br><label for="menulockconfig_field_updateremote_lastname">Update external</label>&nbsp;<select id="menulockconfig_field_updateremote_lastname" class="select menulockconfig_field_updateremote_lastname" name="lockconfig_field_updateremote_lastname"><option selected="selected" value="0">Never</option><option value="1">On update</option></select><br><label for="menulockconfig_field_lock_lastname">Lock value</label>&nbsp;<select id="menulockconfig_field_lock_lastname" class="select menulockconfig_field_lock_lastname" name="lockconfig_field_lock_lastname"><option value="unlocked">Unlocked</option><option value="unlockedifempty">Unlocked if empty</option><option selected="selected" value="locked">Locked</option></select></div></td></tr><tr valign="top"><td align="right"><label for="lockconfig_field_map_email">Email address</label></td><td><input id="lockconfig_field_map_email" name="lockconfig_field_map_email" size="30" value="mail" type="text"><div style="text-align: right"><label for="menulockconfig_field_updatelocal_email">Update local</label>&nbsp;<select id="menulockconfig_field_updatelocal_email" class="select menulockconfig_field_updatelocal_email" name="lockconfig_field_updatelocal_email"><option value="oncreate">On creation</option><option selected="selected" value="onlogin">On every login</option></select><br><label for="menulockconfig_field_updateremote_email">Update external</label>&nbsp;<select id="menulockconfig_field_updateremote_email" class="select menulockconfig_field_updateremote_email" name="lockconfig_field_updateremote_email"><option selected="selected" value="0">Never</option><option value="1">On update</option></select><br><label for="menulockconfig_field_lock_email">Lock value</label>&nbsp;<select id="menulockconfig_field_lock_email" class="select menulockconfig_field_lock_email" name="lockconfig_field_lock_email"><option value="unlocked">Unlocked</option><option value="unlockedifempty">Unlocked if empty</option><option selected="selected" value="locked">Locked</option></select></div></td></tr><tr valign="top"><td align="right"><label for="lockconfig_field_map_city">Location</label></td><td><input id="lockconfig_field_map_city" name="lockconfig_field_map_city" size="30" value="physicalDeliveryOfficeName" type="text"><div style="text-align: right"><label for="menulockconfig_field_updatelocal_city">Update local</label>&nbsp;<select id="menulockconfig_field_updatelocal_city" class="select menulockconfig_field_updatelocal_city" name="lockconfig_field_updatelocal_city"><option value="oncreate">On creation</option><option selected="selected" value="onlogin">On every login</option></select><br><label for="menulockconfig_field_updateremote_city">Update external</label>&nbsp;<select id="menulockconfig_field_updateremote_city" class="select menulockconfig_field_updateremote_city" name="lockconfig_field_updateremote_city"><option selected="selected" value="0">Never</option><option value="1">On update</option></select><br><label for="menulockconfig_field_lock_city">Lock value</label>&nbsp;<select id="menulockconfig_field_lock_city" class="select menulockconfig_field_lock_city" name="lockconfig_field_lock_city"><option value="unlocked">Unlocked</option><option value="unlockedifempty">Unlocked if empty</option><option selected="selected" value="locked">Locked</option></select></div></td></tr><tr valign="top"><td align="right"><label for="lockconfig_field_map_country">Country</label></td><td><input id="lockconfig_field_map_country" name="lockconfig_field_map_country" size="30" value="country" type="text"><div style="text-align: right"><label for="menulockconfig_field_updatelocal_country">Update local</label>&nbsp;<select id="menulockconfig_field_updatelocal_country" class="select menulockconfig_field_updatelocal_country" name="lockconfig_field_updatelocal_country"><option value="oncreate">On creation</option><option selected="selected" value="onlogin">On every login</option></select><br><label for="menulockconfig_field_updateremote_country">Update external</label>&nbsp;<select id="menulockconfig_field_updateremote_country" class="select menulockconfig_field_updateremote_country" name="lockconfig_field_updateremote_country"><option selected="selected" value="0">Never</option><option value="1">On update</option></select><br><label for="menulockconfig_field_lock_country">Lock value</label>&nbsp;<select id="menulockconfig_field_lock_country" class="select menulockconfig_field_lock_country" name="lockconfig_field_lock_country"><option value="unlocked">Unlocked</option><option value="unlockedifempty">Unlocked if empty</option><option selected="selected" value="locked">Locked</option></select></div></td></tr><tr valign="top"><td align="right"><label for="lockconfig_field_map_lang">Language</label></td><td><input id="lockconfig_field_map_lang" name="lockconfig_field_map_lang" size="30" type="text"><div style="text-align: right"><label for="menulockconfig_field_updatelocal_lang">Update local</label>&nbsp;<select id="menulockconfig_field_updatelocal_lang" class="select menulockconfig_field_updatelocal_lang" name="lockconfig_field_updatelocal_lang"><option selected="selected" value="oncreate">On creation</option><option value="onlogin">On every login</option></select><br><label for="menulockconfig_field_updateremote_lang">Update external</label>&nbsp;<select id="menulockconfig_field_updateremote_lang" class="select menulockconfig_field_updateremote_lang" name="lockconfig_field_updateremote_lang"><option selected="selected" value="0">Never</option><option value="1">On update</option></select><br><label for="menulockconfig_field_lock_lang">Lock value</label>&nbsp;<select id="menulockconfig_field_lock_lang" class="select menulockconfig_field_lock_lang" name="lockconfig_field_lock_lang"><option value="unlocked">Unlocked</option><option value="unlockedifempty">Unlocked if empty</option><option selected="selected" value="locked">Locked</option></select></div></td></tr><tr valign="top"><td align="right"><label for="lockconfig_field_map_description">Description</label></td><td><input id="lockconfig_field_map_description" name="lockconfig_field_map_description" size="30" value="distinguishedName" type="text"><div style="text-align: right"><label for="menulockconfig_field_updatelocal_description">Update local</label>&nbsp;<select id="menulockconfig_field_updatelocal_description" class="select menulockconfig_field_updatelocal_description" name="lockconfig_field_updatelocal_description"><option value="oncreate">On creation</option><option selected="selected" value="onlogin">On every login</option></select><br><label for="menulockconfig_field_updateremote_description">Update external</label>&nbsp;<select id="menulockconfig_field_updateremote_description" class="select menulockconfig_field_updateremote_description" name="lockconfig_field_updateremote_description"><option selected="selected" value="0">Never</option><option value="1">On update</option></select><br><label for="menulockconfig_field_lock_description">Lock value</label>&nbsp;<select id="menulockconfig_field_lock_description" class="select menulockconfig_field_lock_description" name="lockconfig_field_lock_description"><option value="unlocked">Unlocked</option><option value="unlockedifempty">Unlocked if empty</option><option selected="selected" value="locked">Locked</option></select></div></td></tr><tr valign="top"><td align="right"><label for="lockconfig_field_map_url">Web page</label></td><td><input id="lockconfig_field_map_url" name="lockconfig_field_map_url" size="30" value="directReports" type="text"><div style="text-align: right"><label for="menulockconfig_field_updatelocal_url">Update local</label>&nbsp;<select id="menulockconfig_field_updatelocal_url" class="select menulockconfig_field_updatelocal_url" name="lockconfig_field_updatelocal_url"><option value="oncreate">On creation</option><option selected="selected" value="onlogin">On every login</option></select><br><label for="menulockconfig_field_updateremote_url">Update external</label>&nbsp;<select id="menulockconfig_field_updateremote_url" class="select menulockconfig_field_updateremote_url" name="lockconfig_field_updateremote_url"><option selected="selected" value="0">Never</option><option value="1">On update</option></select><br><label for="menulockconfig_field_lock_url">Lock value</label>&nbsp;<select id="menulockconfig_field_lock_url" class="select menulockconfig_field_lock_url" name="lockconfig_field_lock_url"><option value="unlocked">Unlocked</option><option value="unlockedifempty">Unlocked if empty</option><option selected="selected" value="locked">Locked</option></select></div></td></tr><tr valign="top"><td align="right"><label for="lockconfig_field_map_idnumber">Employee ID</label></td><td><input id="lockconfig_field_map_idnumber" name="lockconfig_field_map_idnumber" size="30" value="company" type="text"><div style="text-align: right"><label for="menulockconfig_field_updatelocal_idnumber">Update local</label>&nbsp;<select id="menulockconfig_field_updatelocal_idnumber" class="select menulockconfig_field_updatelocal_idnumber" name="lockconfig_field_updatelocal_idnumber"><option value="oncreate">On creation</option><option selected="selected" value="onlogin">On every login</option></select><br><label for="menulockconfig_field_updateremote_idnumber">Update external</label>&nbsp;<select id="menulockconfig_field_updateremote_idnumber" class="select menulockconfig_field_updateremote_idnumber" name="lockconfig_field_updateremote_idnumber"><option selected="selected" value="0">Never</option><option value="1">On update</option></select><br><label for="menulockconfig_field_lock_idnumber">Lock value</label>&nbsp;<select id="menulockconfig_field_lock_idnumber" class="select menulockconfig_field_lock_idnumber" name="lockconfig_field_lock_idnumber"><option value="unlocked">Unlocked</option><option value="unlockedifempty">Unlocked if empty</option><option selected="selected" value="locked">Locked</option></select></div></td></tr><tr valign="top"><td align="right"><label for="lockconfig_field_map_institution">Manager</label></td><td><input id="lockconfig_field_map_institution" name="lockconfig_field_map_institution" size="30" value="manager" type="text"><div style="text-align: right"><label for="menulockconfig_field_updatelocal_institution">Update local</label>&nbsp;<select id="menulockconfig_field_updatelocal_institution" class="select menulockconfig_field_updatelocal_institution" name="lockconfig_field_updatelocal_institution"><option value="oncreate">On creation</option><option selected="selected" value="onlogin">On every login</option></select><br><label for="menulockconfig_field_updateremote_institution">Update external</label>&nbsp;<select id="menulockconfig_field_updateremote_institution" class="select menulockconfig_field_updateremote_institution" name="lockconfig_field_updateremote_institution"><option selected="selected" value="0">Never</option><option value="1">On update</option></select><br><label for="menulockconfig_field_lock_institution">Lock value</label>&nbsp;<select id="menulockconfig_field_lock_institution" class="select menulockconfig_field_lock_institution" name="lockconfig_field_lock_institution"><option value="unlocked">Unlocked</option><option value="unlockedifempty">Unlocked if empty</option><option selected="selected" value="locked">Locked</option></select></div></td></tr><tr valign="top"><td align="right"><label for="lockconfig_field_map_department">Department</label></td><td><input id="lockconfig_field_map_department" name="lockconfig_field_map_department" size="30" value="department" type="text"><div style="text-align: right"><label for="menulockconfig_field_updatelocal_department">Update local</label>&nbsp;<select id="menulockconfig_field_updatelocal_department" class="select menulockconfig_field_updatelocal_department" name="lockconfig_field_updatelocal_department"><option value="oncreate">On creation</option><option selected="selected" value="onlogin">On every login</option></select><br><label for="menulockconfig_field_updateremote_department">Update external</label>&nbsp;<select id="menulockconfig_field_updateremote_department" class="select menulockconfig_field_updateremote_department" name="lockconfig_field_updateremote_department"><option selected="selected" value="0">Never</option><option value="1">On update</option></select><br><label for="menulockconfig_field_lock_department">Lock value</label>&nbsp;<select id="menulockconfig_field_lock_department" class="select menulockconfig_field_lock_department" name="lockconfig_field_lock_department"><option value="unlocked">Unlocked</option><option value="unlockedifempty">Unlocked if empty</option><option selected="selected" value="locked">Locked</option></select></div></td></tr><tr valign="top"><td align="right"><label for="lockconfig_field_map_phone1">Phone 1</label></td><td><input id="lockconfig_field_map_phone1" name="lockconfig_field_map_phone1" size="30" value="mobile" type="text"><div style="text-align: right"><label for="menulockconfig_field_updatelocal_phone1">Update local</label>&nbsp;<select id="menulockconfig_field_updatelocal_phone1" class="select menulockconfig_field_updatelocal_phone1" name="lockconfig_field_updatelocal_phone1"><option value="oncreate">On creation</option><option selected="selected" value="onlogin">On every login</option></select><br><label for="menulockconfig_field_updateremote_phone1">Update external</label>&nbsp;<select id="menulockconfig_field_updateremote_phone1" class="select menulockconfig_field_updateremote_phone1" name="lockconfig_field_updateremote_phone1"><option selected="selected" value="0">Never</option><option value="1">On update</option></select><br><label for="menulockconfig_field_lock_phone1">Lock value</label>&nbsp;<select id="menulockconfig_field_lock_phone1" class="select menulockconfig_field_lock_phone1" name="lockconfig_field_lock_phone1"><option value="unlocked">Unlocked</option><option value="unlockedifempty">Unlocked if empty</option><option selected="selected" value="locked">Locked</option></select></div></td></tr><tr valign="top"><td align="right"><label for="lockconfig_field_map_phone2">Phone 2</label></td><td><input id="lockconfig_field_map_phone2" name="lockconfig_field_map_phone2" size="30" type="text"><div style="text-align: right"><label for="menulockconfig_field_updatelocal_phone2">Update local</label>&nbsp;<select id="menulockconfig_field_updatelocal_phone2" class="select menulockconfig_field_updatelocal_phone2" name="lockconfig_field_updatelocal_phone2"><option selected="selected" value="oncreate">On creation</option><option value="onlogin">On every login</option></select><br><label for="menulockconfig_field_updateremote_phone2">Update external</label>&nbsp;<select id="menulockconfig_field_updateremote_phone2" class="select menulockconfig_field_updateremote_phone2" name="lockconfig_field_updateremote_phone2"><option selected="selected" value="0">Never</option><option value="1">On update</option></select><br><label for="menulockconfig_field_lock_phone2">Lock value</label>&nbsp;<select id="menulockconfig_field_lock_phone2" class="select menulockconfig_field_lock_phone2" name="lockconfig_field_lock_phone2"><option value="unlocked">Unlocked</option><option value="unlockedifempty">Unlocked if empty</option><option selected="selected" value="locked">Locked</option></select></div></td></tr><tr valign="top"><td align="right"><label for="lockconfig_field_map_address">Address</label></td><td><input id="lockconfig_field_map_address" name="lockconfig_field_map_address" size="30" value="postalAddress" type="text"><div style="text-align: right"><label for="menulockconfig_field_updatelocal_address">Update local</label>&nbsp;<select id="menulockconfig_field_updatelocal_address" class="select menulockconfig_field_updatelocal_address" name="lockconfig_field_updatelocal_address"><option value="oncreate">On creation</option><option selected="selected" value="onlogin">On every login</option></select><br><label for="menulockconfig_field_updateremote_address">Update external</label>&nbsp;<select id="menulockconfig_field_updateremote_address" class="select menulockconfig_field_updateremote_address" name="lockconfig_field_updateremote_address"><option selected="selected" value="0">Never</option><option value="1">On update</option></select><br><label for="menulockconfig_field_lock_address">Lock value</label>&nbsp;<select id="menulockconfig_field_lock_address" class="select menulockconfig_field_lock_address" name="lockconfig_field_lock_address"><option value="unlocked">Unlocked</option><option value="unlockedifempty">Unlocked if empty</option><option selected="selected" value="locked">Locked</option></select></div></td></tr></tbody></table>
+</div><p style="text-align: center"><input value="Save changes" type="submit"></p>
+</div>
+</form>
+</div>        </section>
+        <aside id="block-region-side-pre" class="span3 desktop-first-column block-region" data-blockregion="side-pre" data-droptarget="1"><a href="#sb-1" class="skip-block">Skip Navigation</a><div id="inst4" class="block_navigation  block" role="navigation" data-block="navigation" data-instanceid="4" aria-labelledby="instance-4-header"><div class="header"><div id="yui_3_13_0_3_1405080416468_71" class="title"><div class="block_action"><img src="iLearn:%20Administration:%20Plugins:%20Authentication:%20LDAP%20server_files/switch_minus.svg" class="block-hider-hide" tabindex="0" alt="Hide Navigation block" title="Hide Navigation block"><img src="iLearn:%20Administration:%20Plugins:%20Authentication:%20LDAP%20server_files/switch_plus.svg" class="block-hider-show" tabindex="0" alt="Show Navigation block" title="Show Navigation block"></div><h2 id="instance-4-header">Navigation</h2></div></div><div class="content"><ul class="block_tree list"><li class="type_unknown depth_1 contains_branch" aria-expanded="true"><p class="tree_item branch canexpand navigation_node"><a href="https://ilearn.sdgc.com/iLearn-oldest/">Home</a></p><ul><li class="type_setting depth_2 item_with_icon"><p class="tree_item leaf hasicon"><a href="https://ilearn.sdgc.com/iLearn-oldest/my/"><i class="fa fa-circle" id="icon"></i>My home</a></p></li>
+<li class="type_course depth_2 collapsed contains_branch" aria-expanded="false"><p class="tree_item branch"><span title="iLearn" tabindex="0">Site pages</span></p><ul><li class="type_custom depth_3 item_with_icon"><p class="tree_item leaf hasicon"><a href="https://ilearn.sdgc.com/iLearn-oldest/user/index.php?id=1"><i class="fa fa-circle" id="icon"></i>Participants</a></p></li>
+<li class="type_custom depth_3 item_with_icon"><p class="tree_item leaf hasicon"><a href="https://ilearn.sdgc.com/iLearn-oldest/notes/index.php?filtertype=course&amp;filterselect=0"><i class="fa fa-circle" id="icon"></i>Notes</a></p></li>
+<li class="type_custom depth_3 item_with_icon"><p class="tree_item leaf hasicon"><a href="https://ilearn.sdgc.com/iLearn-oldest/calendar/view.php?view=month"><i class="fa fa-circle" id="icon"></i>Calendar</a></p></li></ul></li>
+<li class="type_user depth_2 collapsed contains_branch" aria-expanded="false"><p class="tree_item branch"><span tabindex="0">My profile</span></p><ul><li class="type_custom depth_3 item_with_icon"><p class="tree_item leaf hasicon"><a href="https://ilearn.sdgc.com/iLearn-oldest/user/profile.php?id=4671"><i class="fa fa-circle" id="icon"></i>View profile</a></p></li>
+<li class="type_custom depth_3 collapsed contains_branch" aria-expanded="false"><p class="tree_item branch"><span tabindex="0">Forum posts</span></p><ul><li class="type_custom depth_4 item_with_icon"><p class="tree_item leaf hasicon"><a href="https://ilearn.sdgc.com/iLearn-oldest/mod/forum/user.php?id=4671"><i class="fa fa-circle" id="icon"></i>Posts</a></p></li>
+<li class="type_custom depth_4 item_with_icon"><p class="tree_item leaf hasicon"><a href="https://ilearn.sdgc.com/iLearn-oldest/mod/forum/user.php?id=4671&amp;mode=discussions"><i class="fa fa-circle" id="icon"></i>Discussions</a></p></li></ul></li>
+<li class="type_setting depth_3 item_with_icon"><p class="tree_item leaf hasicon"><a href="https://ilearn.sdgc.com/iLearn-oldest/user/files.php"><i class="fa fa-circle" id="icon"></i>My private files</a></p></li>
+<li class="type_custom depth_3 item_with_icon"><p class="tree_item leaf hasicon"><a href="https://ilearn.sdgc.com/iLearn-oldest/notes/index.php?user=4671&amp;course=1"><i class="fa fa-circle" id="icon"></i>Notes</a></p></li></ul></li>
+<li class="type_system depth_2 collapsed contains_branch" aria-expanded="false"><p data-loaded="0" data-expandable="1" class="tree_item branch" id="expandable_branch_0_courses"><a href="https://ilearn.sdgc.com/iLearn-oldest/course/index.php">Courses</a></p></li></ul></li></ul></div></div><span id="sb-1" class="skip-block-to"></span><a href="#sb-2" class="skip-block">Skip Admin bookmarks</a><div id="inst6" class="block_admin_bookmarks  block" role="navigation" data-block="admin_bookmarks" data-instanceid="6" aria-labelledby="instance-6-header"><div class="header"><div id="yui_3_13_0_3_1405080416468_89" class="title"><div class="block_action"><img src="iLearn:%20Administration:%20Plugins:%20Authentication:%20LDAP%20server_files/switch_minus.svg" class="block-hider-hide" tabindex="0" alt="Hide Admin bookmarks block" title="Hide Admin bookmarks block"><img src="iLearn:%20Administration:%20Plugins:%20Authentication:%20LDAP%20server_files/switch_plus.svg" class="block-hider-show" tabindex="0" alt="Show Admin bookmarks block" title="Show Admin bookmarks block"></div><h2 id="instance-6-header">Admin bookmarks</h2></div></div><div class="content"><div class="footer"><a href="https://ilearn.sdgc.com/iLearn-oldest/blocks/admin_bookmarks/create.php?section=authsettingldap&amp;sesskey=KlmrKdaBpH">Bookmark this page</a></div></div></div><span id="sb-2" class="skip-block-to"></span><a href="#sb-3" class="skip-block">Skip Administration</a><div id="inst5" class="block_settings  block" role="navigation" data-block="settings" data-instanceid="5" aria-labelledby="instance-5-header"><div class="header"><div id="yui_3_13_0_3_1405080416468_106" class="title"><div class="block_action"><img src="iLearn:%20Administration:%20Plugins:%20Authentication:%20LDAP%20server_files/switch_minus.svg" class="block-hider-hide" tabindex="0" alt="Hide Administration block" title="Hide Administration block"><img src="iLearn:%20Administration:%20Plugins:%20Authentication:%20LDAP%20server_files/switch_plus.svg" class="block-hider-show" tabindex="0" alt="Show Administration block" title="Show Administration block"></div><h2 id="instance-5-header">Administration</h2></div></div><div class="content"><div id="settingsnav" class="box block_tree_box"><ul class="block_tree list"><li class="type_unknown collapsed contains_branch" aria-expanded="false"><p class="tree_item branch root_node" id="usersettings"><span tabindex="0">My profile settings</span></p><ul><li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/user/editadvanced.php?id=4671&amp;course=1"><i class="fa fa-circle" id="icon"></i>Edit profile</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/login/change_password.php?id=1"><i class="fa fa-circle" id="icon"></i>Change password</a></p></li>
+<li class="type_setting collapsed contains_branch" aria-expanded="false"><p class="tree_item branch"><span tabindex="0">Roles</span></p><ul><li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/admin/roles/usersroles.php?userid=4671&amp;courseid=1"><i class="fa fa-circle" id="icon"></i>This user's role assignments</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/admin/roles/permissions.php?contextid=4798&amp;userid=4671&amp;courseid=1"><i class="fa fa-circle" id="icon"></i>Permissions</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/admin/roles/check.php?contextid=4798&amp;userid=4671&amp;courseid=1"><i class="fa fa-circle" id="icon"></i>Check permissions</a></p></li></ul></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/message/edit.php?id=4671"><i class="fa fa-circle" id="icon"></i>Messaging</a></p></li>
+<li class="type_custom collapsed contains_branch" aria-expanded="false"><p class="tree_item branch"><span tabindex="0">Activity reports</span></p><ul><li class="type_custom collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/report/log/user.php?id=4671&amp;course=1&amp;mode=today"><i class="fa fa-circle" id="icon"></i>Today's logs</a></p></li>
+<li class="type_custom collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/report/log/user.php?id=4671&amp;course=1&amp;mode=all"><i class="fa fa-circle" id="icon"></i>All logs</a></p></li>
+<li class="type_custom collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/report/outline/user.php?id=4671&amp;course=1&amp;mode=outline"><i class="fa fa-circle" id="icon"></i>Outline report</a></p></li>
+<li class="type_custom collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/report/outline/user.php?id=4671&amp;course=1&amp;mode=complete"><i class="fa fa-circle" id="icon"></i>Complete report</a></p></li>
+<li class="type_custom collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/course/user.php?mode=grade&amp;id=1&amp;user=4671"><i class="fa fa-circle" id="icon"></i>Grade</a></p></li></ul></li></ul></li>
+<li class="type_siteadmin contains_branch" aria-expanded="true"><hr><p class="tree_item branch root_node"><span tabindex="0">Site administration</span></p><ul><li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/admin/index.php"><i class="fa fa-cogs" id="icon"></i>Notifications</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/admin/registration/register.php?huburl=http%3A%2F%2Fhub.moodle.org&amp;hubname=Moodle.org"><i class="fa fa-cogs" id="icon"></i>Registration</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/admin/settings.php?section=optionalsubsystems"><i class="fa fa-cogs" id="icon"></i>Advanced features</a></p></li>
+<li class="type_setting collapsed contains_branch" aria-expanded="false"><p class="tree_item branch"><span tabindex="0">Users</span></p><ul><li class="type_setting collapsed contains_branch" aria-expanded="false"><p class="tree_item branch"><span tabindex="0">Accounts</span></p><ul><li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/admin/user.php"><i class="fa fa-cogs" id="icon"></i>Browse list of users</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/admin/user/user_bulk.php"><i class="fa fa-cogs" id="icon"></i>Bulk user actions</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/user/editadvanced.php?id=-1"><i class="fa fa-cogs" id="icon"></i>Add a new user</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/user/profile/index.php"><i class="fa fa-cogs" id="icon"></i>User profile fields</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/cohort/index.php"><i class="fa fa-cogs" id="icon"></i>Cohorts</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/admin/tool/uploaduser/index.php"><i class="fa fa-cogs" id="icon"></i>Upload users</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/admin/tool/uploaduser/picture.php"><i class="fa fa-cogs" id="icon"></i>Upload user pictures</a></p></li></ul></li>
+<li class="type_setting collapsed contains_branch" aria-expanded="false"><p class="tree_item branch"><span tabindex="0">Permissions</span></p><ul><li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/admin/settings.php?section=userpolicies"><i class="fa fa-cogs" id="icon"></i>User policies</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/admin/roles/admins.php"><i class="fa fa-cogs" id="icon"></i>Site administrators</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/admin/roles/manage.php"><i class="fa fa-cogs" id="icon"></i>Define roles</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/admin/roles/assign.php?contextid=1"><i class="fa fa-cogs" id="icon"></i>Assign system roles</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/admin/roles/check.php?contextid=1"><i class="fa fa-cogs" id="icon"></i>Check system permissions</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/admin/tool/capability/index.php"><i class="fa fa-cogs" id="icon"></i>Capability overview</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/admin/tool/unsuproles/index.php"><i class="fa fa-cogs" id="icon"></i>Unsupported role assignments</a></p></li></ul></li></ul></li>
+<li class="type_setting collapsed contains_branch" aria-expanded="false"><p class="tree_item branch"><span tabindex="0">Courses</span></p><ul><li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/course/management.php"><i class="fa fa-cogs" id="icon"></i>Manage courses and categories</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/course/editcategory.php?parent=0"><i class="fa fa-cogs" id="icon"></i>Add a category</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/admin/settings.php?section=coursesettings"><i class="fa fa-cogs" id="icon"></i>Course default settings</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/admin/settings.php?section=courserequest"><i class="fa fa-cogs" id="icon"></i>Course request</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/course/pending.php"><i class="fa fa-cogs" id="icon"></i>Pending requests</a></p></li>
+<li class="type_setting collapsed contains_branch" aria-expanded="false"><p class="tree_item branch"><span tabindex="0">Backups</span></p><ul><li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/admin/settings.php?section=backupgeneralsettings"><i class="fa fa-cogs" id="icon"></i>General backup defaults</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/admin/settings.php?section=importgeneralsettings"><i class="fa fa-cogs" id="icon"></i>General import defaults</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/admin/settings.php?section=automated"><i class="fa fa-cogs" id="icon"></i>Automated backup setup</a></p></li></ul></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/enrol/apply/manage.php"><i class="fa fa-cogs" id="icon"></i>Manage enrolment applications</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/admin/tool/uploadcourse/index.php"><i class="fa fa-cogs" id="icon"></i>Upload courses</a></p></li></ul></li>
+<li class="type_setting collapsed contains_branch" aria-expanded="false"><p class="tree_item branch"><span tabindex="0">Grades</span></p><ul><li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/admin/settings.php?section=gradessettings"><i class="fa fa-cogs" id="icon"></i>General settings</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/admin/settings.php?section=gradecategorysettings"><i class="fa fa-cogs" id="icon"></i>Grade category settings</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/admin/settings.php?section=gradeitemsettings"><i class="fa fa-cogs" id="icon"></i>Grade item settings</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/grade/edit/scale/index.php"><i class="fa fa-cogs" id="icon"></i>Scales</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/grade/edit/outcome/index.php"><i class="fa fa-cogs" id="icon"></i>Outcomes</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/grade/edit/letter/index.php"><i class="fa fa-cogs" id="icon"></i>Letters</a></p></li>
+<li class="type_setting collapsed contains_branch" aria-expanded="false"><p class="tree_item branch"><span tabindex="0">Report settings</span></p><ul><li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/admin/settings.php?section=gradereportgrader"><i class="fa fa-cogs" id="icon"></i>Grader report</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/admin/settings.php?section=gradereportoverview"><i class="fa fa-cogs" id="icon"></i>Overview report</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/admin/settings.php?section=gradereportuser"><i class="fa fa-cogs" id="icon"></i>User report</a></p></li></ul></li></ul></li>
+<li class="type_setting collapsed contains_branch" aria-expanded="false"><p class="tree_item branch"><span tabindex="0">Location</span></p><ul><li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/admin/settings.php?section=locationsettings"><i class="fa fa-cogs" id="icon"></i>Location settings</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/admin/tool/timezoneimport/index.php"><i class="fa fa-cogs" id="icon"></i>Update timezones</a></p></li></ul></li>
+<li class="type_setting collapsed contains_branch" aria-expanded="false"><p class="tree_item branch"><span tabindex="0">Language</span></p><ul><li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/admin/settings.php?section=langsettings"><i class="fa fa-cogs" id="icon"></i>Language settings</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/admin/tool/customlang/index.php"><i class="fa fa-cogs" id="icon"></i>Language customisation</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/admin/tool/langimport/index.php"><i class="fa fa-cogs" id="icon"></i>Language packs</a></p></li></ul></li>
+<li class="type_setting contains_branch" aria-expanded="true"><p class="tree_item branch"><span tabindex="0">Plugins</span></p><ul><li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/admin/plugins.php"><i class="fa fa-cogs" id="icon"></i>Plugins overview</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/admin/tool/installaddon/index.php"><i class="fa fa-cogs" id="icon"></i>Install add-ons</a></p></li>
+<li class="type_setting collapsed contains_branch" aria-expanded="false"><p class="tree_item branch"><span tabindex="0">Activity modules</span></p><ul><li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/admin/modules.php"><i class="fa fa-cogs" id="icon"></i>Manage activities</a></p></li>
+<li class="type_setting collapsed contains_branch" aria-expanded="false"><p class="tree_item branch"><span tabindex="0">Assignment</span></p><ul><li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/admin/settings.php?section=modsettingassign"><i class="fa fa-cogs" id="icon"></i>Assignment settings</a></p></li>
+<li class="type_setting collapsed contains_branch" aria-expanded="false"><p class="tree_item branch"><span tabindex="0">Submission plugins</span></p><ul><li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/mod/assign/adminmanageplugins.php?subtype=assignsubmission"><i class="fa fa-cogs" id="icon"></i>Manage assignment submission plugins</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/admin/settings.php?section=assignsubmission_file"><i class="fa fa-cogs" id="icon"></i>File submissions</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/admin/settings.php?section=assignsubmission_onlinetext"><i class="fa fa-cogs" id="icon"></i>Online text submissions</a></p></li></ul></li>
+<li class="type_setting collapsed contains_branch" aria-expanded="false"><p class="tree_item branch"><span tabindex="0">Feedback plugins</span></p><ul><li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/mod/assign/adminmanageplugins.php?subtype=assignfeedback"><i class="fa fa-cogs" id="icon"></i>Manage assignment feedback plugins</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/admin/settings.php?section=assignfeedback_comments"><i class="fa fa-cogs" id="icon"></i>Feedback comments</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/admin/settings.php?section=assignfeedback_editpdf"><i class="fa fa-cogs" id="icon"></i>Annotate PDF</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/admin/settings.php?section=assignfeedback_file"><i class="fa fa-cogs" id="icon"></i>File feedback</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/admin/settings.php?section=assignfeedback_offline"><i class="fa fa-cogs" id="icon"></i>Offline grading worksheet</a></p></li></ul></li></ul></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/admin/settings.php?section=modsettingbook"><i class="fa fa-cogs" id="icon"></i>Book</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/admin/settings.php?section=modsettingcertificate"><i class="fa fa-cogs" id="icon"></i>Certificate</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/admin/settings.php?section=modsettingchat"><i class="fa fa-cogs" id="icon"></i>Chat</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/admin/settings.php?section=modsettingdata"><i class="fa fa-cogs" id="icon"></i>Database</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/admin/settings.php?section=modsettingfeedback"><i class="fa fa-cogs" id="icon"></i>Feedback</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/admin/settings.php?section=modsettingfolder"><i class="fa fa-cogs" id="icon"></i>Folder</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/admin/settings.php?section=modsettingforum"><i class="fa fa-cogs" id="icon"></i>Forum</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/admin/settings.php?section=modsettingglossary"><i class="fa fa-cogs" id="icon"></i>Glossary</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/admin/settings.php?section=modsettingimscp"><i class="fa fa-cogs" id="icon"></i>IMS content package</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/admin/settings.php?section=modsettinglabel"><i class="fa fa-cogs" id="icon"></i>Label</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/admin/settings.php?section=modsettinglesson"><i class="fa fa-cogs" id="icon"></i>Lesson</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/admin/settings.php?section=modsettinglti"><i class="fa fa-cogs" id="icon"></i>LTI</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/admin/settings.php?section=modsettingpage"><i class="fa fa-cogs" id="icon"></i>Page</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/admin/settings.php?section=modsettingquiz"><i class="fa fa-cogs" id="icon"></i>Quiz</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/admin/settings.php?section=modsettingresource"><i class="fa fa-cogs" id="icon"></i>File</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/admin/settings.php?section=modsettingscorm"><i class="fa fa-cogs" id="icon"></i>SCORM package</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/admin/settings.php?section=modsettingurl"><i class="fa fa-cogs" id="icon"></i>URL</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/admin/settings.php?section=modsettingworkshop"><i class="fa fa-cogs" id="icon"></i>Workshop</a></p></li></ul></li>
+<li class="type_setting collapsed contains_branch" aria-expanded="false"><p class="tree_item branch"><span tabindex="0">Course formats</span></p><ul><li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/admin/settings.php?section=manageformats"><i class="fa fa-cogs" id="icon"></i>Manage course formats</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/admin/settings.php?section=formatsettingsingleactivity"><i class="fa fa-cogs" id="icon"></i>Single activity format</a></p></li></ul></li>
+<li class="type_setting collapsed contains_branch" aria-expanded="false"><p class="tree_item branch"><span tabindex="0">Blocks</span></p><ul><li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/admin/blocks.php"><i class="fa fa-cogs" id="icon"></i>Manage blocks</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/admin/settings.php?section=blocksettingcourse_list"><i class="fa fa-cogs" id="icon"></i>Courses</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/admin/settings.php?section=blocksettingcourse_overview"><i class="fa fa-cogs" id="icon"></i>Course overview</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/admin/settings.php?section=blocksettinghtml"><i class="fa fa-cogs" id="icon"></i>HTML</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/admin/settings.php?section=blocksettingonline_users"><i class="fa fa-cogs" id="icon"></i>Online users</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/admin/settings.php?section=blocksettingrss_client"><i class="fa fa-cogs" id="icon"></i>Remote RSS feeds</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/admin/settings.php?section=blocksettingsection_links"><i class="fa fa-cogs" id="icon"></i>Section links</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/admin/settings.php?section=blocksettingtags"><i class="fa fa-cogs" id="icon"></i>Tags</a></p></li></ul></li>
+<li class="type_setting collapsed contains_branch" aria-expanded="false"><p class="tree_item branch"><span tabindex="0">Message outputs</span></p><ul><li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/admin/message.php"><i class="fa fa-cogs" id="icon"></i>Manage message outputs</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/message/defaultoutputs.php"><i class="fa fa-cogs" id="icon"></i>Default message outputs</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/admin/settings.php?section=messagesettingemail"><i class="fa fa-cogs" id="icon"></i>Email</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/admin/settings.php?section=messagesettingjabber"><i class="fa fa-cogs" id="icon"></i>Jabber message</a></p></li></ul></li>
+<li class="type_setting contains_branch" aria-expanded="true"><p class="tree_item branch"><span tabindex="0">Authentication</span></p><ul><li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/admin/settings.php?section=manageauths"><i class="fa fa-cogs" id="icon"></i>Manage authentication</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/admin/auth_config.php?auth=email"><i class="fa fa-cogs" id="icon"></i>Email-based self-registration</a></p></li>
+<li class="type_setting item_with_icon current_branch"><p class="tree_item leaf active_tree_node"><a href="https://ilearn.sdgc.com/iLearn-oldest/admin/auth_config.php?auth=ldap"><i class="fa fa-cogs" id="icon"></i>LDAP server</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/admin/auth_config.php?auth=manual"><i class="fa fa-cogs" id="icon"></i>Manual accounts</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/admin/auth_config.php?auth=nologin"><i class="fa fa-cogs" id="icon"></i>No login</a></p></li></ul></li>
+<li class="type_setting collapsed contains_branch" aria-expanded="false"><p class="tree_item branch"><span tabindex="0">Enrolments</span></p><ul><li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/admin/settings.php?section=manageenrols"><i class="fa fa-cogs" id="icon"></i>Manage enrol plugins</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/admin/settings.php?section=enrolsettingsapply"><i class="fa fa-cogs" id="icon"></i>Course enrol confirmation</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/admin/settings.php?section=enrolsettingscohort"><i class="fa fa-cogs" id="icon"></i>Cohort sync</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/admin/settings.php?section=enrolsettingsguest"><i class="fa fa-cogs" id="icon"></i>Guest access</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/admin/settings.php?section=enrolsettingsldap"><i class="fa fa-cogs" id="icon"></i>LDAP enrolments</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/admin/settings.php?section=enrolsettingsmanual"><i class="fa fa-cogs" id="icon"></i>Manual enrolments</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/admin/settings.php?section=enrolsettingsself"><i class="fa fa-cogs" id="icon"></i>Self enrolment</a></p></li></ul></li>
+<li class="type_setting collapsed contains_branch" aria-expanded="false"><p class="tree_item branch"><span tabindex="0">Text editors</span></p><ul><li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/admin/settings.php?section=manageeditors"><i class="fa fa-cogs" id="icon"></i>Manage editors</a></p></li>
+<li class="type_setting collapsed contains_branch" aria-expanded="false"><p class="tree_item branch"><span tabindex="0">TinyMCE HTML editor</span></p><ul><li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/admin/settings.php?section=editorsettingstinymce"><i class="fa fa-cogs" id="icon"></i>General settings</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/admin/settings.php?section=tinymcedragmathsettings"><i class="fa fa-cogs" id="icon"></i>Insert equation</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/admin/settings.php?section=tinymcemoodleemoticonsettings"><i class="fa fa-cogs" id="icon"></i>Insert emoticon</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/admin/settings.php?section=tinymcespellcheckersettings"><i class="fa fa-cogs" id="icon"></i>Legacy spell checker</a></p></li></ul></li></ul></li>
+<li class="type_setting collapsed contains_branch" aria-expanded="false"><p class="tree_item branch"><span tabindex="0">Licences</span></p><ul><li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/admin/settings.php?section=managelicenses"><i class="fa fa-cogs" id="icon"></i>Manage licences</a></p></li></ul></li>
+<li class="type_setting collapsed contains_branch" aria-expanded="false"><p class="tree_item branch"><span tabindex="0">Filters</span></p><ul><li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/admin/filters.php"><i class="fa fa-cogs" id="icon"></i>Manage filters</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/admin/settings.php?section=commonfiltersettings"><i class="fa fa-cogs" id="icon"></i>Common filter settings</a></p></li></ul></li>
+<li class="type_setting collapsed contains_branch" aria-expanded="false"><p class="tree_item branch"><span tabindex="0">Repositories</span></p><ul><li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/admin/repository.php"><i class="fa fa-cogs" id="icon"></i>Manage repositories</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/admin/settings.php?section=managerepositoriescommon"><i class="fa fa-cogs" id="icon"></i>Common repository settings</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/admin/repository.php?sesskey=KlmrKdaBpH&amp;action=edit&amp;repos=areafiles"><i class="fa fa-cogs" id="icon"></i>Embedded files</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/admin/repository.php?sesskey=KlmrKdaBpH&amp;action=edit&amp;repos=local"><i class="fa fa-cogs" id="icon"></i>Server files</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/admin/repository.php?sesskey=KlmrKdaBpH&amp;action=edit&amp;repos=recent"><i class="fa fa-cogs" id="icon"></i>Recent files</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/admin/repository.php?sesskey=KlmrKdaBpH&amp;action=edit&amp;repos=upload"><i class="fa fa-cogs" id="icon"></i>Upload a file</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/admin/repository.php?sesskey=KlmrKdaBpH&amp;action=edit&amp;repos=url"><i class="fa fa-cogs" id="icon"></i>URL downloader</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/admin/repository.php?sesskey=KlmrKdaBpH&amp;action=edit&amp;repos=user"><i class="fa fa-cogs" id="icon"></i>Private files</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/admin/repository.php?sesskey=KlmrKdaBpH&amp;action=edit&amp;repos=wikimedia"><i class="fa fa-cogs" id="icon"></i>Wikimedia</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/admin/repository.php?sesskey=KlmrKdaBpH&amp;action=edit&amp;repos=youtube"><i class="fa fa-cogs" id="icon"></i>Youtube videos</a></p></li></ul></li>
+<li class="type_setting collapsed contains_branch" aria-expanded="false"><p class="tree_item branch"><span tabindex="0">Web services</span></p><ul><li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/admin/settings.php?section=mobile"><i class="fa fa-cogs" id="icon"></i>Mobile</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/admin/settings.php?section=webservicesoverview"><i class="fa fa-cogs" id="icon"></i>Overview</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/admin/webservice/documentation.php"><i class="fa fa-cogs" id="icon"></i>API Documentation</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/admin/settings.php?section=externalservices"><i class="fa fa-cogs" id="icon"></i>External services</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/admin/settings.php?section=webserviceprotocols"><i class="fa fa-cogs" id="icon"></i>Manage protocols</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/admin/settings.php?section=webservicetokens"><i class="fa fa-cogs" id="icon"></i>Manage tokens</a></p></li></ul></li>
+<li class="type_setting collapsed contains_branch" aria-expanded="false"><p class="tree_item branch"><span tabindex="0">Question behaviours</span></p><ul><li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/admin/qbehaviours.php"><i class="fa fa-cogs" id="icon"></i>Manage question behaviours</a></p></li></ul></li>
+<li class="type_setting collapsed contains_branch" aria-expanded="false"><p class="tree_item branch"><span tabindex="0">Question types</span></p><ul><li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/admin/qtypes.php"><i class="fa fa-cogs" id="icon"></i>Manage question types</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/admin/settings.php?section=qdefaultsetting"><i class="fa fa-cogs" id="icon"></i>Question preview defaults</a></p></li></ul></li>
+<li class="type_setting collapsed contains_branch" aria-expanded="false"><p class="tree_item branch"><span tabindex="0">Plagiarism prevention</span></p><ul><li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/admin/plagiarism.php"><i class="fa fa-cogs" id="icon"></i>Manage plagiarism plugins</a></p></li></ul></li>
+<li class="type_setting collapsed contains_branch" aria-expanded="false"><p class="tree_item branch"><span tabindex="0">Reports</span></p><ul><li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/admin/reports.php"><i class="fa fa-cogs" id="icon"></i>Manage reports</a></p></li></ul></li>
+<li class="type_setting collapsed contains_branch" aria-expanded="false"><p class="tree_item branch"><span tabindex="0">Admin tools</span></p><ul><li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/admin/tools.php"><i class="fa fa-cogs" id="icon"></i>Manage admin tools</a></p></li></ul></li>
+<li class="type_setting collapsed contains_branch" aria-expanded="false"><p class="tree_item branch"><span tabindex="0">Caching</span></p><ul><li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/cache/admin.php"><i class="fa fa-cogs" id="icon"></i>Configuration</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/cache/testperformance.php"><i class="fa fa-cogs" id="icon"></i>Test performance</a></p></li>
+<li class="type_setting collapsed contains_branch" aria-expanded="false"><p class="tree_item branch"><span tabindex="0">Cache stores</span></p><ul><li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/admin/settings.php?section=cachestore_memcache_settings"><i class="fa fa-cogs" id="icon"></i>Memcache</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/admin/settings.php?section=cachestore_memcached_settings"><i class="fa fa-cogs" id="icon"></i>Memcached</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/admin/settings.php?section=cachestore_mongodb_settings"><i class="fa fa-cogs" id="icon"></i>MongoDB</a></p></li></ul></li></ul></li>
+<li class="type_setting collapsed contains_branch" aria-expanded="false"><p class="tree_item branch"><span tabindex="0">Local plugins</span></p><ul><li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/admin/localplugins.php"><i class="fa fa-cogs" id="icon"></i>Manage local plugins</a></p></li></ul></li></ul></li>
+<li class="type_setting collapsed contains_branch" aria-expanded="false"><p class="tree_item branch"><span tabindex="0">Security</span></p><ul><li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/admin/settings.php?section=ipblocker"><i class="fa fa-cogs" id="icon"></i>IP blocker</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/admin/settings.php?section=sitepolicies"><i class="fa fa-cogs" id="icon"></i>Site policies</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/admin/settings.php?section=httpsecurity"><i class="fa fa-cogs" id="icon"></i>HTTP security</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/admin/settings.php?section=notifications"><i class="fa fa-cogs" id="icon"></i>Notifications</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/admin/settings.php?section=antivirus"><i class="fa fa-cogs" id="icon"></i>Anti-Virus</a></p></li></ul></li>
+<li class="type_setting collapsed contains_branch" aria-expanded="false"><p class="tree_item branch"><span tabindex="0">Appearance</span></p><ul><li class="type_setting collapsed contains_branch" aria-expanded="false"><p class="tree_item branch"><span tabindex="0">Themes</span></p><ul><li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/admin/settings.php?section=themesettings"><i class="fa fa-cogs" id="icon"></i>Theme settings</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/theme/index.php"><i class="fa fa-cogs" id="icon"></i>Theme selector</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/admin/settings.php?section=themesettingafterburner"><i class="fa fa-cogs" id="icon"></i>Afterburner</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/admin/settings.php?section=themesettinganomaly"><i class="fa fa-cogs" id="icon"></i>Anomaly</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/admin/settings.php?section=themesettingarialist"><i class="fa fa-cogs" id="icon"></i>Arialist</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/admin/settings.php?section=themesettingbrick"><i class="fa fa-cogs" id="icon"></i>Brick</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/admin/settings.php?section=themesettingclean"><i class="fa fa-cogs" id="icon"></i>Clean</a></p></li>
+<li class="type_setting collapsed contains_branch" aria-expanded="false"><p class="tree_item branch"><span tabindex="0">Essential</span></p><ul><li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/admin/settings.php?section=theme_essential_generic"><i class="fa fa-cogs" id="icon"></i>General Settings</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/admin/settings.php?section=theme_essential_custommenu"><i class="fa fa-cogs" id="icon"></i>Custom Menu</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/admin/settings.php?section=theme_essential_color"><i class="fa fa-cogs" id="icon"></i>Colour Settings</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/admin/settings.php?section=theme_essential_slideshow"><i class="fa fa-cogs" id="icon"></i>Frontpage Slideshow</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/admin/settings.php?section=theme_essential_frontcontent"><i class="fa fa-cogs" id="icon"></i>Frontpage Settings</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/admin/settings.php?section=theme_essential_marketing"><i class="fa fa-cogs" id="icon"></i>Marketing Spots</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/admin/settings.php?section=theme_essential_social"><i class="fa fa-cogs" id="icon"></i>Social Networking</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/admin/settings.php?section=theme_essential_categoryicon"><i class="fa fa-cogs" id="icon"></i>Icon based Category Display</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/admin/settings.php?section=theme_essential_mobileapps"><i class="fa fa-cogs" id="icon"></i>Mobile Apps</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/admin/settings.php?section=theme_essential_alerts"><i class="fa fa-cogs" id="icon"></i>User Alerts</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/admin/settings.php?section=theme_essential_analytics"><i class="fa fa-cogs" id="icon"></i>Google Analytics</a></p></li></ul></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/admin/settings.php?section=themesettingformal_white"><i class="fa fa-cogs" id="icon"></i>Formal white</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/admin/settings.php?section=themesettingfusion"><i class="fa fa-cogs" id="icon"></i>Fusion</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/admin/settings.php?section=themesettingmagazine"><i class="fa fa-cogs" id="icon"></i>Magazine</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/admin/settings.php?section=themesettingnimble"><i class="fa fa-cogs" id="icon"></i>Nimble</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/admin/settings.php?section=themesettingnonzero"><i class="fa fa-cogs" id="icon"></i>Nonzero</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/admin/settings.php?section=themesettingoverlay"><i class="fa fa-cogs" id="icon"></i>Overlay</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/admin/settings.php?section=themesettingsky_high"><i class="fa fa-cogs" id="icon"></i>Sky High</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/admin/settings.php?section=themesettingsplash"><i class="fa fa-cogs" id="icon"></i>Splash</a></p></li></ul></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/admin/settings.php?section=calendar"><i class="fa fa-cogs" id="icon"></i>Calendar</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/admin/settings.php?section=navigation"><i class="fa fa-cogs" id="icon"></i>Navigation</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/admin/settings.php?section=htmlsettings"><i class="fa fa-cogs" id="icon"></i>HTML settings</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/admin/settings.php?section=mediasettings"><i class="fa fa-cogs" id="icon"></i>Media embedding</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/admin/settings.php?section=documentation"><i class="fa fa-cogs" id="icon"></i>Moodle Docs</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/my/indexsys.php"><i class="fa fa-cogs" id="icon"></i>Default My home page</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/user/profilesys.php"><i class="fa fa-cogs" id="icon"></i>Default profile page</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/admin/settings.php?section=coursecontact"><i class="fa fa-cogs" id="icon"></i>Courses</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/admin/settings.php?section=ajax"><i class="fa fa-cogs" id="icon"></i>AJAX and Javascript</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/tag/manage.php"><i class="fa fa-cogs" id="icon"></i>Manage tags</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/admin/settings.php?section=additionalhtml"><i class="fa fa-cogs" id="icon"></i>Additional HTML</a></p></li></ul></li>
+<li class="type_setting collapsed contains_branch" aria-expanded="false"><p class="tree_item branch"><span tabindex="0">Front page</span></p><ul><li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/admin/settings.php?section=frontpagesettings"><i class="fa fa-cogs" id="icon"></i>Front page settings</a></p></li></ul></li>
+<li class="type_setting collapsed contains_branch" aria-expanded="false"><p class="tree_item branch"><span tabindex="0">Server</span></p><ul><li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/admin/settings.php?section=systempaths"><i class="fa fa-cogs" id="icon"></i>System paths</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/admin/settings.php?section=supportcontact"><i class="fa fa-cogs" id="icon"></i>Support contact</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/admin/settings.php?section=sessionhandling"><i class="fa fa-cogs" id="icon"></i>Session handling</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/admin/settings.php?section=http"><i class="fa fa-cogs" id="icon"></i>HTTP</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/admin/settings.php?section=maintenancemode"><i class="fa fa-cogs" id="icon"></i>Maintenance mode</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/admin/settings.php?section=cleanup"><i class="fa fa-cogs" id="icon"></i>Cleanup</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/admin/environment.php"><i class="fa fa-cogs" id="icon"></i>Environment</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/admin/phpinfo.php"><i class="fa fa-cogs" id="icon"></i>PHP info</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/admin/settings.php?section=performance"><i class="fa fa-cogs" id="icon"></i>Performance</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/admin/registration/index.php"><i class="fa fa-cogs" id="icon"></i>Hubs</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/admin/settings.php?section=updatenotifications"><i class="fa fa-cogs" id="icon"></i>Update notifications</a></p></li></ul></li>
+<li class="type_setting collapsed contains_branch" aria-expanded="false"><p class="tree_item branch"><span tabindex="0">Reports</span></p><ul><li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/comment/"><i class="fa fa-cogs" id="icon"></i>Comments</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/report/backups/index.php"><i class="fa fa-cogs" id="icon"></i>Backups</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/report/configlog/index.php"><i class="fa fa-cogs" id="icon"></i>Config changes</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/report/log/index.php?id=1"><i class="fa fa-cogs" id="icon"></i>Logs</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/report/loglive/index.php"><i class="fa fa-cogs" id="icon"></i>Live logs</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/report/performance/index.php"><i class="fa fa-cogs" id="icon"></i>Performance overview</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/report/questioninstances/index.php"><i class="fa fa-cogs" id="icon"></i>Question instances</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/report/security/index.php"><i class="fa fa-cogs" id="icon"></i>Security overview</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/admin/tool/spamcleaner/index.php"><i class="fa fa-cogs" id="icon"></i>Spam cleaner</a></p></li></ul></li>
+<li class="type_setting collapsed contains_branch" aria-expanded="false"><p class="tree_item branch"><span tabindex="0">Development</span></p><ul><li class="type_setting collapsed contains_branch" aria-expanded="false"><p class="tree_item branch"><span tabindex="0">Experimental</span></p><ul><li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/admin/settings.php?section=experimentalsettings"><i class="fa fa-cogs" id="icon"></i>Experimental settings</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/admin/tool/dbtransfer/index.php"><i class="fa fa-cogs" id="icon"></i>Database migration</a></p></li></ul></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/admin/settings.php?section=debugging"><i class="fa fa-cogs" id="icon"></i>Debugging</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/admin/webservice/testclient.php"><i class="fa fa-cogs" id="icon"></i>Web service test client</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/admin/purgecaches.php"><i class="fa fa-cogs" id="icon"></i>Purge all caches</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/admin/thirdpartylibs.php"><i class="fa fa-cogs" id="icon"></i>Third party libraries</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/admin/tool/behat/index.php"><i class="fa fa-cogs" id="icon"></i>Acceptance testing</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/admin/tool/generator/maketestcourse.php"><i class="fa fa-cogs" id="icon"></i>Make test course</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/admin/tool/generator/maketestplan.php"><i class="fa fa-cogs" id="icon"></i>Make JMeter test plan</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/admin/tool/phpunit/index.php"><i class="fa fa-cogs" id="icon"></i>PHPUnit tests</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/admin/tool/xmldb/"><i class="fa fa-cogs" id="icon"></i>XMLDB editor</a></p></li></ul></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/admin/tool/assignmentupgrade/index.php"><i class="fa fa-cogs" id="icon"></i>Assignment upgrade helper</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="https://ilearn.sdgc.com/iLearn-oldest/admin/tool/qeupgradehelper/index.php"><i class="fa fa-cogs" id="icon"></i>Question engine upgrade helper</a></p></li></ul></li></ul></div><div class="footer"><form class="adminsearchform" method="get" action="https://ilearn.sdgc.com/iLearn-oldest/admin/search.php" role="search"><div><label for="adminsearchquery" class="accesshide">Search in settings</label><input id="adminsearchquery" name="query" type="text"><input value="Search" type="submit"></div></form></div></div></div><span id="sb-3" class="skip-block-to"></span></aside>    </div>
+    
+    <!-- End Main Regions -->
+
+	<footer id="page-footer" class="container-fluid">
+			<div class="row-fluid">
+		<aside id="block-region-footer-left" class="span4 block-region" data-blockregion="footer-left" data-droptarget="1"></aside><aside id="block-region-footer-middle" class="span4 block-region" data-blockregion="footer-middle" data-droptarget="1"></aside><aside id="block-region-footer-right" class="span4 block-region" data-blockregion="footer-right" data-droptarget="1"></aside> 	</div>
+
+	<div class="footerlinks row-fluid">
+    	<hr>
+    	<p class="helplink"><a href="http://docs.moodle.org/26/en/admin/auth/ldap"><img class="iconhelp icon-pre" alt="Moodle Docs for this page" title="Moodle Docs for this page" src="iLearn:%20Administration:%20Plugins:%20Authentication:%20LDAP%20server_files/docs.svg">Moodle Docs for this page</a></p>
+        
+    	</div>
+	
+
+	</footer>
+
+    <script type="text/javascript" src="iLearn:%20Administration:%20Plugins:%20Authentication:%20LDAP%20server_files/footer.js"></script>
+<script type="text/javascript">
+//<![CDATA[
+M.str = {"moodle":{"lastmodified":"Last modified","name":"Name","error":"Error","info":"Information","viewallcourses":"View all courses","morehelp":"More help","loadinghelp":"Loading...","cancel":"Cancel","yes":"Yes"},"repository":{"type":"Type","size":"Size","invalidjson":"Invalid JSON string","nofilesattached":"No files attached","filepicker":"File picker","logout":"Logout","nofilesavailable":"No files available","norepositoriesavailable":"Sorry, none of your current repositories can return files in the required format.","fileexistsdialogheader":"File exists","fileexistsdialog_editor":"A file with that name has already been attached to the text you are editing.","fileexistsdialog_filemanager":"A file with that name has already been attached","renameto":"Rename to \"{$a}\"","referencesexist":"There are {$a} alias\/shortcut files that use this file as their source","select":"Select"},"admin":{"confirmation":"Confirmation"},"core_form":{"unmaskpassword":"Unmask"}};
+//]]>
+</script>
+<script type="text/javascript">
+//<![CDATA[
+var navtreeexpansions4 = [{"id":"expandable_branch_0_courses","key":"courses","type":0}];
+//]]>
+</script>
+<script type="text/javascript">
+//<![CDATA[
+YUI().use('node', function(Y) {
+M.util.load_flowplayer();
+setTimeout("fix_column_widths()", 20);
+M.yui.galleryversion="2010.04.08-12-35";Y.use("moodle-theme_essential-coloursswitcher",function() {M.theme_essential.initColoursSwitcher({"div":".dropdown-menu"});
+});
+M.yui.galleryversion="2010.04.08-12-35";Y.use("moodle-block_navigation-navigation",function() {M.block_navigation.init_add_tree({"id":"4","instance":"4","candock":false,"courselimit":"20","expansionlimit":0});
+});
+M.yui.galleryversion="2010.04.08-12-35";Y.use("moodle-block_navigation-navigation",function() {M.block_navigation.init_add_tree({"id":"5","instance":"5","candock":false});
+});
+M.util.help_popups.setup(Y);
+M.yui.galleryversion="2010.04.08-12-35";Y.use("moodle-core-popuphelp",function() {M.core.init_popuphelp();
+});
+M.util.init_block_hider(Y, {"id":"inst4","title":"Navigation","preference":"block4hidden","tooltipVisible":"Hide Navigation block","tooltipHidden":"Show Navigation block"});
+M.util.init_block_hider(Y, {"id":"inst6","title":"Admin bookmarks","preference":"block6hidden","tooltipVisible":"Hide Admin bookmarks block","tooltipHidden":"Show Admin bookmarks block"});
+M.util.init_block_hider(Y, {"id":"inst5","title":"Administration","preference":"block5hidden","tooltipVisible":"Hide Administration block","tooltipHidden":"Show Administration block"});
+M.yui.galleryversion="2010.04.08-12-35";Y.use("moodle-auth-passwordunmask",function() {M.auth.passwordunmask();
+});
+ M.util.js_pending('random53bfd35d8bb315'); Y.on('domready', function() { M.util.js_complete("init");  M.util.js_complete('random53bfd35d8bb315'); });
+
+});
+//]]>
+</script>
+
+</div>
+
+<!-- Start Google Analytics -->
+<!-- End Google Analytics -->
+
+<script type="text/javascript">
+jQuery(document).ready(function() {
+    var offset = 220;
+    var duration = 500;
+    jQuery(window).scroll(function() {
+        if (jQuery(this).scrollTop() > offset) {
+            jQuery('.back-to-top').fadeIn(duration);
+        } else {
+            jQuery('.back-to-top').fadeOut(duration);
+        }
+    });
+    
+    jQuery('.back-to-top').click(function(event) {
+        event.preventDefault();
+        jQuery('html, body').animate({scrollTop: 0}, duration);
+        return false;
+    })
+});
+</script>
+<a style="display: none;" href="#top" class="back-to-top" title="Back to top"><i class="fa fa-angle-up "></i></a>
+
+
+</body></html>
